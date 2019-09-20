@@ -3,15 +3,20 @@ import CharacterCard from "./CharacterCard";
 
 export default function SearchForm({chars}) {
   const [searchText, setSearchText] = useState("");
-  const [foundChar, setFoundChar] = useState(<></>);
+  const [foundChars, setFoundChars] = useState([]);
   
   const handleSubmit = e => {
     e.preventDefault();
+
+    var newFoundChars = [];
+
     Object.values(chars).forEach(val => {
-      val.name.toLowerCase().includes(searchText) && setFoundChar(<CharacterCard char={val}/>);
+      val.name.toLowerCase().includes(searchText) && 
+        newFoundChars.push(val);
       // setFoundChar(<CharacterCard char={val}/>);
       // console.log(<CharacterCard chars={chars}/>);
     });
+    setFoundChars(newFoundChars);
   }
 
   const handleChange = e => {
@@ -23,7 +28,10 @@ export default function SearchForm({chars}) {
       <form onSubmit={e => handleSubmit(e)}>
         <input value={searchText} onChange={e => handleChange(e)} type="text"/>
         <input type="submit"/>
-        {foundChar}
+        {foundChars.map((val, idx) => {
+          console.log(val);
+          return <CharacterCard  key={idx} char={val}/>;
+        })}
       </form>
     </section>
   );
