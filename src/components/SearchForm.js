@@ -29,7 +29,6 @@ export default function SearchForm({chars}) {
         <input value={searchText} onChange={e => handleChange(e)} type="text"/>
         <input type="submit"/>
         {foundChars.map((val, idx) => {
-          console.log(val);
           return <CharacterCard  key={idx} char={val}/>;
         })}
       </form>
