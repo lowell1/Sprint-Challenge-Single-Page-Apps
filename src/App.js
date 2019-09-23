@@ -25,10 +25,10 @@ export default function App() {
       <main>
         <Header />
         <Route path="/" component={WelcomePage} exact/>
-        <NavLink to="/charList">Character list</NavLink>
         <NavLink to="/">Home</NavLink>
+        <NavLink to="/charList">Character list</NavLink>
         <NavLink to="/SearchForm">Search</NavLink>
-        <Route path="/SearchForm" render={props => <CharacterList {...props} chars={chars} />}/>
+        <Route path="/SearchForm" render={props => <SearchForm {...props} chars={chars} />}/>
         {/* <Route path="/charList" component={CharacterList}/> */}
         <Route path='/charList' render={props => <CharacterList {...props} chars={chars} />}/>
       </main>
